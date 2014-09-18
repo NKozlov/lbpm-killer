@@ -68,7 +68,7 @@ EnemyTank.prototype.update = function () {
     this.turret.y = this.tank.y;
     this.turret.rotation = this.game.physics.arcade.angleBetween(this.tank, this.player);
 
-    /*if (this.game.physics.arcade.distanceBetween(this.tank, this.player) < 300) {
+    if (this.game.physics.arcade.distanceBetween(this.tank, this.player) < 300) {
         if (this.game.time.now > this.nextFire && this.bullets.countDead() > 0) {
             this.nextFire = this.game.time.now + this.fireRate;
 
@@ -78,7 +78,7 @@ EnemyTank.prototype.update = function () {
 
             bullet.rotation = this.game.physics.arcade.moveToObject(bullet, this.player, 500);
         }
-    }*/
+    }
 
 };
 
@@ -89,7 +89,7 @@ function preload() {
     game.load.atlas('tank', 'assets/tanks/tanks.png', 'assets/tanks/tanks.json');
     game.load.atlas('enemy', 'assets/tanks/enemy-tanks.png', 'assets/tanks/tanks.json');
     game.load.image('logo', 'assets/tanks/logo.png');
-    game.load.image('bullet', 'assets/killas/bullet.png');
+    game.load.image('bullet', 'assets/tanks/bullet.png');
     game.load.image('earth', 'assets/tanks/dark_grass.png');
     //    game.load.image('dark-grass')
     game.load.spritesheet('kaboom', 'assets/tanks/explosion.png', 64, 64, 23);
@@ -118,7 +118,7 @@ var keyD;
 var keyA;
 
 var bullets;
-var fireRate = 1000;
+var fireRate = 100;
 var nextFire = 0;
 
 function create() {
@@ -302,7 +302,7 @@ function fire() {
         bullet.reset(turret.x, turret.y);
 
 //        speed bullet
-        bullet.rotation = game.physics.arcade.moveToPointer(bullet, 60, game.input.activePointer, 50000);
+        bullet.rotation = game.physics.arcade.moveToPointer(bullet, 1000, game.input.activePointer, 500);
     }
 
 }
